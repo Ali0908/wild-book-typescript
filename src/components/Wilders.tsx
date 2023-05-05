@@ -2,6 +2,7 @@ import avatar from "../assets/avatar.png";
 import Skill, {ISkillProps} from"./Skill";
 
 export interface IWilderProps {
+    id:number;
     name: string;
     city: string;
     skills: ISkillProps[];

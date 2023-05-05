@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import Wilder, {IWilderProps} from './components/Wilders';
 import AddWilder from './components/AddWilders';
+import EditSkillForm, { IEditSkillFormProps } from './components/EditSkillForm';
 
 interface ISkillFromDB {
     id: number;
@@ -15,6 +16,7 @@ interface IGradeFromDB {
 }
 
 interface IWilderFromDB {
+    id: number;
     name: string;
     city: string;
     grades: IGradeFromDB[];
@@ -23,6 +25,7 @@ interface IWilderFromDB {
 const formatWildersFromDB = (wilders: IWilderFromDB[]): IWilderProps[] =>
 wilders.map((wilder) => {
     return {
+    id:wilder.id,
     name: wilder.name,
     city: wilder.city,
     skills: wilder.grades.map((grade) => {
@@ -56,7 +59,7 @@ return (
     <h2>Wilders</h2>
     <section className="card-row">
         {wilders.map((wilder, index, array) => (
-            <Wilder key ={index} name ={wilder.name} city ={wilder.city} skills ={wilder.skills}/>
+            <Wilder id={wilder.id} key ={index} name ={wilder.name} city ={wilder.city} skills ={wilder.skills}/>
         )
         )}
     </section>
